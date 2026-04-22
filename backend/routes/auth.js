@@ -21,9 +21,9 @@ const generateToken = (user) => {
 // Register route
 
 router.post("/register", async (req, res) => {
-  const { username, password, email } = req.body;
-  if (!username || !password || !email) {
-    return res.status(400).json({ error: "Username, password and email are required" });
+  const { name, password, email } = req.body;
+  if (!name || !password || !email) {
+    return res.status(400).json({ error: "Name, password and email are required" });
   }
   const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
   if (userExists.rows.length > 0) {
@@ -33,8 +33,8 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await pool.query(
-      "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *",
-      [username, email, hashedPassword]
+      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *",
+      [name, email, hashedPassword]
     );
 
     const token = generateToken(newUser.rows[0].id);
