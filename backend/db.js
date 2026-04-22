@@ -13,4 +13,13 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
 });
 
+pool.on("connect", () => {
+  console.log("Connected to the database");
+});
+
+pool.on("error", (err) => {
+  console.error("Unexpected error on idle client", err);
+  process.exit(-1);
+});
+
 export default pool;
