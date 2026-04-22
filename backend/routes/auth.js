@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
 
 // me route
 
-router.get("/me", async (req, res) => {
+router.get("/me", protect, async (req, res) => {
     res.json({ user: req.user });
     // return info of the logged in user from protect middleware
 })
@@ -80,7 +80,6 @@ router.get("/me", async (req, res) => {
 // Logout route
 
 router.post("/logout", (req, res) =>
-{  res.clearCookie("token", cookiesOptions);
-  res.json({ message: "Logged out successfully" });
+{ res.cookie("token", "", { ...cookiesOptions, maxAge: 1 }).json({ message: "Logged out successfully" })
 });
 export default router;   
