@@ -1,14 +1,18 @@
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import axios from 'axios';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 
 function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -29,9 +33,9 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/login" element={<h1>Login</h1>} />
-        <Route path="/register" element={<h1>Register</h1>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
