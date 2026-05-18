@@ -6,13 +6,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+axios.defaults.withCredentials = true;
 
 function App() {
   const [user, setUser] = useState(null);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,7 +19,7 @@ function App() {
         const res = await axios.get('http://localhost:5000/api/auth/me');
         setUser(res.data);
       } catch (err) {
-        setError(err.response.data.message);
+        setUser(null);
       } finally {
         setLoading(false);      
     }
@@ -34,7 +33,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
