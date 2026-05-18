@@ -38,7 +38,7 @@ router.post("/register", async (req, res) => {
       [name, email, hashedPassword]
     );
 
-    const token = generateToken(newUser.rows[0].id);
+    const token = generateToken(newUser.rows[0]);
     res.cookie("token", token, cookiesOptions);
     res.status(201).json({ message: "User registered successfully", user: newUser.rows[0] });
 });
@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     };
 
-    const token = generateToken(userData.id);
+    const token = generateToken(userData);
     res.cookie("token", token, cookiesOptions);
     res.json({ message: "Logged in successfully", user: userData });
 

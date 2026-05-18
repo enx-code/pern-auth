@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/me');
+        const res = await axios.get('http://localhost:8000/api/auth/me');
         setUser(res.data);
       } catch (err) {
         setUser(null);
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setUser={setUser}/>} />
       </Routes>
     </Router>
   );
