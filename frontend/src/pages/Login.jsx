@@ -23,9 +23,10 @@ const Login = ({ setUser }) => {
     }
   };
   return (
-    <div>
-      <form action="">
-        <h2>Login</h2>
+    <div className="min-h-screen flex items-center justify-center">
+      <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
+        <h2 className="text-xl mb-4">Login</h2>
+        {error && <p className="text-red-500 mb-3">{error}</p>  }
         <input type="email" 
         placeholder="email" 
         className="border p-2 w-full mb-3" 
