@@ -31,7 +31,7 @@ function App() {
   if (loading) return <div>Loading...</div>;
   return (
     <Router>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home user={user} error={error} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />

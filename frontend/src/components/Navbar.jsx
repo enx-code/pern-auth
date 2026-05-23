@@ -1,10 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
   return (
     <nav className="bg-gray-800 text-white p-4">
-      <h1 className="text-xl font-bold">PERN Auth</h1>
+      <Link to="/" className="text-xl font-bold"
+      >PERN Auth</Link>
+      <div>
+        (user ? (
+          <>
+            <span className="mr-4">Welcome, {user.username}</span>)
+      </div>
     </nav>
+    
   );
 };
 
