@@ -9,6 +9,7 @@ import Register from './pages/Register';
 axios.defaults.withCredentials = true;
 
 function App() {
+  const [error, setError] = useState(""); 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +33,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home user={user} error={error} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser}/>} />
       </Routes>
