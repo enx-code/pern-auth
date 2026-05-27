@@ -6,7 +6,7 @@ const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-      await axios.post("http://localhost:8000/api/auth/logout");
+      await axios.post("/api/auth/logout");
       setUser(null);
       navigate("/");
   };
