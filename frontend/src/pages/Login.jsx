@@ -28,7 +28,8 @@ const Login = ({ setUser }) => {
         className="bg-white p-6 rounded shadow-md w-full max-w-lg"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-xl mb-4">Login</h2>
+        <h2 className="text-2xl mb-6 
+        font-bold text-center text-gray-800">Login</h2>
         {error && <p className="text-red-500 mb-3">{error}</p>}
         <input
           type="email"

@@ -19,7 +19,8 @@ const Navbar = ({ user, setUser }) => {
       >PERN Auth</Link>
       <div>
         {user ? (
-          <button onClick={handleLogout} className="bg-red-500 px-3
+          <button onClick={handleLogout} 
+          className="bg-red-500 px-3
            py-1 rounded">
             Logout
           </button>) : (
