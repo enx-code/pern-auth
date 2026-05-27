@@ -10,7 +10,6 @@ import NotFound from './components/NotFound';
 axios.defaults.withCredentials = true;
 
 function App() {
-  const [error, setError] = useState(""); 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -20,7 +19,7 @@ function App() {
       try {
         const res = await axios.get('/api/auth/me');
         setUser(res.data.user);
-      } catch (err) {
+      } catch {
         setUser(null);
       } finally {
         setLoading(false);      
@@ -34,7 +33,7 @@ function App() {
     <Router>
       <Navbar user={user} setUser={setUser} />
       <Routes>
-        <Route path="/" element={<Home user={user} error={error} />} />
+        <Route path="/" element={<Home user={user} />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : 
         <Login setUser={setUser} />} />
         <Route path="/register" element={user ? <Navigate to="/" /> :

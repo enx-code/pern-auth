@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Register = ({ setUser }) => {
@@ -20,7 +20,7 @@ const Register = ({ setUser }) => {
       );
       setUser(res.data.user);
       navigate("/");
-    } catch (err) {
+    } catch {
       setError("Registration failed");
     }
   };

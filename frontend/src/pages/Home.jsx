@@ -1,13 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = ( { user, error } ) => {
+const Home = ( { user } ) => {
   return (
     <div className="min-h-[80vh] flex items-center 
     justify-center p-4">
       <div className="bg-white p-8 rounded-lg 
       shadow-md w-full max-w-lg text-center">
-        {error && <p className="text-red-500">{error}</p>}
         {user ? (
           <div>
             <h2 className="text-2xl font-bold mb-4 text-grey-800">
