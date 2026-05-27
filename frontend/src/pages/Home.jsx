@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Home = ( { user, error } ) => {
   return (
-    <div>
-      <div>
-        {error && <p className="text-red-500 mb-3">{error}</p>}
+    <div className="min-h-[80vh] flex items-center 
+    justify-center p-4">
+      <div className="bg-white p-8 rounded-lg 
+      shadow-md w-full max-w-lg text-center">
+        {error && <p className="text-red-500">{error}</p>}
         {user ? (
           <div>
             <h2 className="text-2xl font-bold mb-4 text-grey-800">
@@ -15,8 +17,8 @@ const Home = ( { user, error } ) => {
           </div>
         ) : (
           <div>
-            <h2 className="text-2xl">Please log in or register.</h2>
-            <div>
+            <h2 className="text-2xl font-bold mb-6">Please log in or register.</h2>
+            <div className="flex flex-col gap-y-4">
               <Link
                 to="/login"
                 className="w-full text-white 
@@ -26,13 +28,13 @@ const Home = ( { user, error } ) => {
               </Link>
               <Link
                 to="/register"
-                className="w-full text-white 
+                className="w-full text-gray-800 
               bg-blue-200 p-3 rounded-md hover:bg-blue-300 front-medium"
               >
                 Register
               </Link>
             </div>
-          </div>
+          </div>  
         )}
       </div>
     </div>
