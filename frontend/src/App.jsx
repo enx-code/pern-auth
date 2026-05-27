@@ -5,6 +5,7 @@ import axios from 'axios';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import NotFound from './components/NotFound';
 
 axios.defaults.withCredentials = true;
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home user={user} error={error} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser}/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
